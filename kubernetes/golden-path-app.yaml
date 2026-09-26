@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: platform-demo
+  labels:
+    owner: app-team
+    cost-control: validation
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golden-path-api
+  namespace: platform-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: golden-path-api
+  template:
+    metadata:
+      labels:
+        app: golden-path-api
+    spec:
+      containers:
+        - name: api
+          image: ghcr.io/alexcgodwin/golden-path-api:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080

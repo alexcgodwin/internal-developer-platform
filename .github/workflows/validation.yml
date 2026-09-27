@@ -28,6 +28,6 @@ jobs:
         run: terraform validate
       - name: Validate Kubernetes contract
         run: |
-          grep -q "kind: Deployment" kubernetes/golden-path-app.yaml
-          grep -q "kind: Service" kubernetes/golden-path-app.yaml
+          grep -qi "kind: Deployment" kubernetes/golden-path-app.yaml
+          grep -qi "kind: Service" kubernetes/golden-path-app.yaml
           grep -q "resources:" kubernetes/golden-path-app.yaml

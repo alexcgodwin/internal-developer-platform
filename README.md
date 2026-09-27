@@ -36,10 +36,8 @@ flowchart TD
 
 Run from the repository root:
 
-```bash
-cd terraform
-terraform init -backend=false
-terraform validate
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/validate.ps1
 ```
 
 ## Cost Control

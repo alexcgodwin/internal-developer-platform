@@ -1,6 +1,6 @@
 # Internal Developer Platform
 
-A platform engineering reference project that shows how teams can request a standard application workspace, deploy through a golden path, and inherit Kubernetes guardrails, delivery structure, and operating evidence.
+A platform engineering project that shows how teams can request a standard application workspace, deploy through a golden path, and inherit Kubernetes guardrails, delivery structure, and operating evidence.
 
 ## Problem
 
@@ -16,13 +16,13 @@ flowchart TD
     D --> E[Health and Evidence]
 ```
 
-## What This Proves
+## What This Project Demonstrates
 
 - Platform engineering and developer self-service design.
 - Kubernetes namespace onboarding with quota and policy thinking.
 - Golden-path workload deployment structure.
 - Terraform-driven platform configuration.
-- Cost-aware validation without leaving live resources running.
+- Cost-controlled platform validation with reusable engineering evidence.
 
 ## Repository Structure
 
@@ -42,9 +42,9 @@ powershell -ExecutionPolicy Bypass -File scripts/validate.ps1
 
 ## Cost Control
 
-No long-running cloud resources are required for the current version. Live validation should be done in a short window, then destroyed immediately.
+This project uses a controlled validation model: infrastructure and workloads are defined from code, evidence is captured through repeatable checks, and cost exposure is kept under control.
 
-## Interview Talking Points
+## Engineering Talking Points
 
 - How a platform team reduces repeated setup work for application teams.
 - Why namespace, quota, RBAC and health checks belong in the golden path.

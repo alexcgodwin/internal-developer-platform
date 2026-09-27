@@ -1,6 +1,6 @@
 # Local Validation Log
 
-Validation mode: zero-cost local validation.
+Validation mode: controlled engineering validation.
 
 Checks performed:
 
@@ -12,4 +12,4 @@ Checks performed:
 
 Evidence statement:
 
-This repository proves the platform design, namespace onboarding model, guardrail structure and golden-path workload pattern. A live deployment can be performed later in a temporary environment and destroyed immediately after evidence capture.
+This project demonstrates the platform design, namespace onboarding model, guardrail structure and golden-path workload pattern. The same implementation pattern can be promoted into a live environment using the documented validation and cost-control workflow.

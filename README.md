@@ -1,34 +1,37 @@
 # Internal Developer Platform
 
-A platform engineering project that gives application teams a standard workspace, golden-path delivery structure, Kubernetes guardrails and operating evidence.
+A platform engineering project that shows how teams can request a standard application workspace, deploy through a golden path, and inherit Kubernetes guardrails, delivery structure and operating evidence.
 
-## What I Built
+![Internal developer platform architecture](assets/platform-architecture.svg)
 
-- Standard workspace and namespace onboarding pattern.
-- Terraform-driven platform configuration and reusable outputs.
-- Kubernetes quota, RBAC, health-check and deployment expectations.
-- Validation scripts and evidence notes without permanent cluster spend.
+## Executive Summary
 
-## Delivery Workflow
+This project demonstrates the operating model behind an internal developer platform. The goal is not only to deploy a sample workload; it is to define the repeatable path that application teams use so they do not rebuild namespace, quota, RBAC, health checks and delivery conventions for every service.
 
-1. Request a standard application workspace.
-2. Apply namespace, quota, RBAC and policy conventions.
-3. Deploy through the golden-path structure.
-4. Validate configuration and record the result.
-5. Hand over clear ownership and operating boundaries.
+## Problem
+
+Application teams often lose time rebuilding the same foundation for every service. A platform team should give them a ready workspace with sensible defaults, clear boundaries and a delivery path that can be promoted across environments.
+
+## Engineering Scope
+
+| Area | Implementation |
+| --- | --- |
+| Developer intake | Standard workspace request model |
+| Platform contract | Namespace, naming, quota and ownership pattern |
+| Runtime | Kubernetes golden-path app manifest |
+| Delivery | Reusable deployment shape ready for CI/CD or GitOps |
+| Evidence | Validation script, local validation log and summary notes |
+| Operations | Workspace onboarding runbook and production expansion path |
 
 ## Repository Structure
 
 | Path | Purpose |
 | --- | --- |
-| `terraform/` | Workspace policy and reusable outputs. |
-| `kubernetes/` | Golden-path namespace and application resources. |
-| `docs/evidence/` | Validation and engineering proof notes. |
-| `scripts/` | Repeatable validation commands. |
-
-## Continuous Validation
-
-GitHub Actions checks Terraform formatting and validation, then verifies the Kubernetes golden-path contract for deployment, service and resource controls.
+| `terraform/` | Platform workspace policy and reusable outputs |
+| `kubernetes/` | Golden-path namespace and application manifest |
+| `scripts/validate.ps1` | Local validation checks |
+| `docs/evidence/` | Validation summary and proof notes |
+| `docs/runbooks/` | Workspace onboarding procedure |
 
 ## Validation
 
@@ -36,23 +39,18 @@ GitHub Actions checks Terraform formatting and validation, then verifies the Kub
 powershell -ExecutionPolicy Bypass -File scripts/validate.ps1
 ```
 
-## Engineering Controls
+## Production Expansion Path
 
-| Control | Senior engineering concern |
-| --- | --- |
-| Onboarding | Standard workspace and namespace entry point. |
-| Governance | Quota, RBAC, policy and ownership boundaries. |
-| Delivery | Golden-path structure with explicit escape hatches. |
-| Operations | Validation, evidence and reviewable change. |
+- Connect workspace creation to a service catalog or developer portal.
+- Add GitOps promotion through Argo CD or Flux.
+- Enforce admission policy with Kyverno, Gatekeeper or cloud-native policy controls.
+- Add SSO-backed RBAC and namespace ownership metadata.
+- Publish platform SLOs for onboarding time, deployment frequency and failed rollout recovery.
 
-## Failure and Review Model
+## Interview Defense
 
-The platform considers invalid workspace requests, quota conflicts, missing ownership, unhealthy workloads and policy exceptions before they become application-team incidents.
+The value of this project is the platform operating model. It shows how guardrails, self-service, deployment consistency and evidence fit together. The implementation stays intentionally lightweight so the repo can be validated locally without cost, while the production path is clear.
 
-## Completed Result
+## Status
 
-A structured internal developer platform pattern for standard workspaces, guardrails and repeatable delivery, presented as an operating model rather than a collection of basic manifests.
-
-## Engineering Value
-
-This project demonstrates developer experience, governance, Kubernetes boundaries, delivery controls and reviewable platform evidence.
+Validated as a cost-controlled platform pattern with reusable Kubernetes, Terraform, runbook and evidence artifacts.

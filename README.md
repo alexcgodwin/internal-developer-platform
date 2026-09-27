@@ -32,6 +32,19 @@ A platform engineering project that gives application teams a standard workspace
 powershell -ExecutionPolicy Bypass -File scripts/validate.ps1
 ```
 
+## Engineering Controls
+
+| Control | Senior engineering concern |
+| --- | --- |
+| Onboarding | Standard workspace and namespace entry point. |
+| Governance | Quota, RBAC, policy and ownership boundaries. |
+| Delivery | Golden-path structure with explicit escape hatches. |
+| Operations | Validation, evidence and reviewable change. |
+
+## Failure and Review Model
+
+The platform considers invalid workspace requests, quota conflicts, missing ownership, unhealthy workloads and policy exceptions before they become application-team incidents.
+
 ## Completed Result
 
 A structured internal developer platform pattern for standard workspaces, guardrails and repeatable delivery, presented as an operating model rather than a collection of basic manifests.

@@ -26,6 +26,10 @@ A platform engineering project that gives application teams a standard workspace
 | `docs/evidence/` | Validation and engineering proof notes. |
 | `scripts/` | Repeatable validation commands. |
 
+## Continuous Validation
+
+GitHub Actions checks Terraform formatting and validation, then verifies the Kubernetes golden-path contract for deployment, service and resource controls.
+
 ## Validation
 
 ```powershell

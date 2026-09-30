@@ -106,6 +106,23 @@ GitHub Actions validates Terraform formatting and configuration, the Helm chart,
 
 This repository does not require an always-on paid cluster to remain useful or reviewable. The platform artifacts, CI validation, diagrams, policies and runbooks remain available after temporary cloud resources are removed. When a live cluster is needed, the same deployment contract can be exercised against a temporary environment and then destroyed.
 
+## Evidence Index
+
+- Golden-path contract: `platform/service-template.yaml`
+- Helm workload packaging: `helm/golden-path/`
+- Environment promotion: `gitops/environments/`
+- Admission policy: `policies/kyverno/require-workload-guardrails.yaml`
+- Reliability objectives: `observability/service-level-objectives.yaml`
+- Alerting rules: `observability/prometheus-rules.yaml`
+- FinOps controls: `finops/guardrails.yaml`
+- Threat model: `docs/threat-model.md`
+- Deployment authority decision: `docs/adr/0001-gitops-as-deployment-authority.md`
+- Failure response: `runbooks/deployment-failure.md`
+
+## Engineering Boundaries
+
+This repository demonstrates the platform contract and its controls. It does not claim an always-on paid Kubernetes cluster. The design deliberately keeps the evidence reviewable after temporary runtime resources are removed.
+
 ## Status
 
 The repository contains the platform contract, Helm golden path, GitOps environment promotion, Kubernetes guardrails, Kyverno policy, observability/SLO configuration, FinOps controls, architecture decisions, runbooks and validation evidence.

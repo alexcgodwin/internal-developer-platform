@@ -1,0 +1,6 @@
+apiVersion: v2
+name: golden-path
+version: 0.1.0
+appVersion: "1.0.0"
+description: Standard workload contract for the internal developer platform
+type: application

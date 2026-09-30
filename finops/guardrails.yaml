@@ -1,0 +1,18 @@
+platform: internal-developer-platform
+controls:
+  requiredLabels:
+    - owner
+    - environment
+    - cost-center
+  namespaceBudgets:
+    dev: 25
+    staging: 40
+    production: 100
+  idlePolicy:
+    nonProductionScaleDown: true
+    reviewAfterHours: 24
+  optimization:
+    rightsizingReview: weekly
+    unusedResourceReview: weekly
+    storageLifecycleReview: monthly
+currency: USD

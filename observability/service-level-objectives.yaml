@@ -1,0 +1,18 @@
+service: golden-path-api
+slos:
+  availability:
+    objective: 99.9
+    window: 30d
+    indicator: successful_requests / total_requests
+  latency:
+    objective: 99.0
+    window: 30d
+    indicator: requests_under_500ms / total_requests
+alerting:
+  burnRate:
+    fast:
+      window: 1h
+      threshold: 14.4
+    slow:
+      window: 6h
+      threshold: 6

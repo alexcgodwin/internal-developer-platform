@@ -1,0 +1,21 @@
+apiVersion: platform.opschugex.dev/v1alpha1
+kind: ServiceTemplate
+metadata:
+  name: standard-api
+spec:
+  runtime: container
+  environments: [dev, staging, production]
+  delivery:
+    strategy: gitops
+    chart: helm/golden-path
+  security:
+    networkPolicy: required
+    nonRoot: required
+    vulnerabilityScan: required
+  observability:
+    metrics: required
+    logs: required
+    alerts: required
+  ownership:
+    teamLabel: required
+    costCenterLabel: required

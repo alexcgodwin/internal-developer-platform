@@ -1,0 +1,27 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-workload-guardrails
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: require-resources-and-non-root
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Workloads must define resources and run as non-root."
+        pattern:
+          spec:
+            securityContext:
+              runAsNonRoot: true
+            containers:
+              - resources:
+                  requests:
+                    cpu: "?*"
+                    memory: "?*"
+                  limits:
+                    cpu: "?*"
+                    memory: "?*"

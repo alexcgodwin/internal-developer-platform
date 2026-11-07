@@ -4,3 +4,8 @@
 .terraform.lock.hcl
 .DS_Store
 node_modules/
+
+# Local release observations and Python build outputs
+.local/
+__pycache__/
+*.pyc

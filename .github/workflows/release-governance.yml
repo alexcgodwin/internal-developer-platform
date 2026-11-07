@@ -1,0 +1,40 @@
+name: Offline Release Governance
+
+on:
+  pull_request:
+    paths:
+      - '.claude/skills/**'
+      - 'release_management/**'
+      - 'docs/offline-release-control-plane.md'
+      - '.github/workflows/release-governance.yml'
+      - 'README.md'
+  push:
+    branches: ['master']
+    paths:
+      - '.claude/skills/**'
+      - 'release_management/**'
+      - 'docs/offline-release-control-plane.md'
+      - '.github/workflows/release-governance.yml'
+      - 'README.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-release-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run deterministic release and skill tests
+        run: python -m unittest discover -s release_management/tests -p 'test_*.py' -v
+      - name: Check formatting of changes
+        run: git diff --check HEAD^ HEAD

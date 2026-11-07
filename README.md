@@ -126,3 +126,12 @@ This repository demonstrates the platform contract and its controls. It does not
 ## Status
 
 The repository contains the platform contract, Helm golden path, GitOps environment promotion, Kubernetes guardrails, Kyverno policy, observability/SLO configuration, FinOps controls, architecture decisions, runbooks and validation evidence.
+## Local release preparation, skills and inventory
+
+A no-paid-services release-control demo has been added under `release_management/`. It includes:
+
+- A deterministic release-preparation agent that checks pinned container digests, commit identifiers and repository tests before writing a reviewable release-intent file on a feature branch. It does not deploy anything.
+- Three reusable Claude Code skills under `.claude/skills/` covering release readiness, inventory and incident evidence. Their usage by other engineers has not been established.
+- An offline release inventory that compares Git-tracked desired intents with explicitly **unverified** operator observations and flags missing evidence, failed observations and reported drift.
+
+Use `python -m unittest discover -s release_management/tests -p 'test_*.py'` to run the tests. See [the operator guide](docs/offline-release-control-plane.md) for examples, limitations, approval requirements, and how the tools deliberately avoid production changes. The GitHub workflow runs tests without cloud credentials, AI tokens, or external deployment services.

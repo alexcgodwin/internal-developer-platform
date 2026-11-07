@@ -1,0 +1,8 @@
+{
+  "change_ref": "PR-EXAMPLE-123",
+  "commit": "1234567890abcdef1234567890abcdef12345678",
+  "environment": "dev",
+  "image": "ghcr.io/example/guestbook-api@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "service": "guestbook-api",
+  "version": "v1.2.3"
+}
